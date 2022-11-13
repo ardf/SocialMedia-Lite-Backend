@@ -20,6 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 from os.path import join, dirname
 from dotenv import load_dotenv
 
+import django_heroku
 dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 
@@ -27,7 +28,7 @@ load_dotenv(dotenv_path)
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("SECRET_KEY")
+SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
@@ -166,3 +167,5 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'account.User'
+
+django_heroku.settings(locals())
